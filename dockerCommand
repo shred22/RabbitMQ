@@ -1,0 +1,1 @@
+docker run --name rabbit-docker --hostname rabbit-docker -p5672:5672 -p15672:15672 -p61613:61613 -v/home/dell/shreyas/Programming/RabbitMQ/rabbit-docker-data:/var/lib/rabbitmq/mnesia shred22/rabbitmq:latest

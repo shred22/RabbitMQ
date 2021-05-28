@@ -1,0 +1,31 @@
+version: "3.3"
+services:
+  rabbit-docker:
+    build: .
+    container_name: rabbit-docker
+    environment: 
+      - RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq.conf
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit log [{console,[{level,debug}]}]
+    #image: shred22/rabbitmq-stomp:latest
+    ports:
+      - "5673:5673"
+      - "5671:5671"
+      - "15673:15673"
+      - "15674:15674"
+      - "61613:61613"
+      - "61614:61614"
+      - "61615:61615"
+    networks:
+    - ms-network
+    volumes:
+    - /home/dell/shreyas/Programming/RabbitMQ/rabbit-docker-data:/var/lib/rabbitmq/mnesia
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+networks:
+  ms-network:
+

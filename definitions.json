@@ -1,0 +1,87 @@
+{
+    "users": [{
+            "name": "guest",
+            "password": "guest",
+            "tags": "administrator"
+        },
+        {
+            "name": "shred22",
+            "password": "password",
+            "tags": "administrator"
+        }
+    ],
+    "vhosts": [{
+        "name": "/"
+    }],
+    "permissions": [{
+            "user": "guest",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        },
+        {
+            "user": "shred22",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+
+        }
+    ],
+    "parameters": [],
+    "policies": [],
+    "exchanges": [{
+        "name": "custom-exchange",
+        "vhost": "/",
+        "type": "topic",
+        "durable": true,
+        "auto_delete": false,
+        "internal": false,
+        "arguments": []
+    },
+      {
+        "name": "dead-letter-exchange",
+        "vhost": "/",
+        "type": "topic",
+        "durable": true,
+        "auto_delete": false,
+        "internal": false,
+        "arguments": []
+      }],
+    "queues": [{
+            "name": "custom.exc.queue.1",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {}
+        },
+        {
+            "name": "custom.exc.queue.2",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {}
+        }
+    ],
+    "bindings": [{
+
+            "source": "custom-exchange",
+            "vhost": "/",
+            "destination": "custom..exc.destqueue.1",
+            "destination_type": "queue",
+            "routing_key": "custom.exc.destqueue.1.key#",
+            "arguments": []
+        },
+        {
+
+            "source": "custom-exchange",
+            "vhost": "/",
+            "destination": "custom..exc.destqueue.2",
+            "destination_type": "queue",
+            "routing_key": "custom.exc.destqueue.2.key#",
+            "arguments": []
+        }
+    ]
+
+}

@@ -18,7 +18,7 @@ services:
     networks:
     - ms-network
     volumes:
-    - /home/dell/shreyas/Programming/RabbitMQ/rabbit-docker-data:/var/lib/rabbitmq/mnesia
+    - /home/shreyas/Programming/Softwares/RabbitMQ/rabbit-docker-data:/var/lib/rabbitmq/mnesia
     deploy:
       replicas: 2
       update_config:
